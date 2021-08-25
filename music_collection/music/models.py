@@ -10,4 +10,3 @@ class Music(models.Model):
     # rating = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     info = models.TextField(default="")
     category_models = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
-
