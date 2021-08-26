@@ -7,14 +7,13 @@ from .models import Music
 
 class MusicModelTest(TestCase):
 
-    def test_string_representation_for_performer(self):
-        music = Music(performer="Madonna")
-        self.assertEqual(str(music), music.performer)
-
-    def test_string_representation_for_name_cd(self):
-        music = Music(name_cd="Like a Prayer")
-        self.assertEqual(str(music), music.name_cd)
-
-    def test_string_representation_for_publisher(self):
-        music = Music(publisher="Sire Records")
-        self.assertEqual(str(music), music.publisher)
+    @classmethod
+    def setUpTestData(cls):
+        # Set up non-modified object used by test methods
+        Music.objects.create(performer="Madonna",
+                             name_cd="Like a Prayer",
+                             publisher="Sire Records",
+                             year="1989-01-01",
+                             info="This is some example track list",
+                             category_models=None
+                             )
