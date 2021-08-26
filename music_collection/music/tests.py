@@ -43,3 +43,10 @@ class MusicModelTest(TestCase):
         music = Music.objects.get(id=1)
         field_label = music._meta.get_field("info").verbose_name
         self.assertEqual(field_label, "info")
+
+    # test str representation
+    def test_string_representation(self):
+        music = Music.objects.get(id=1)
+        performer_field = music.performer
+        name_cd_field = music.name_cd
+        self.assertEqual(str(music), performer_field + name_cd_field)
