@@ -7,14 +7,57 @@ from .models import Music
 
 class MusicModelTest(TestCase):
 
-    def test_string_representation_for_performer(self):
-        music = Music(performer="Madonna")
-        self.assertEqual(str(music), music.performer)
+    @classmethod
+    def setUpTestData(cls):
+        # Set up non-modified object used by test methods
+        Music.objects.create(performer="Madonna",
+                             name_cd="Like a Prayer",
+                             publisher="Sire Records",
+                             year="1989-01-01",
+                             info="This is some example track list",
+                             category_models=None
+                             )
 
-    def test_string_representation_for_name_cd(self):
-        music = Music(name_cd="Like a Prayer")
-        self.assertEqual(str(music), music.name_cd)
+    # test for labels fields
+    def test_performer_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("performer").verbose_name
+        self.assertEqual(field_label, "performer")
 
-    def test_string_representation_for_publisher(self):
-        music = Music(publisher="Sire Records")
-        self.assertEqual(str(music), music.publisher)
+    def test_name_cd_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("name_cd").verbose_name
+        self.assertEqual(field_label, "name cd")
+
+    def test_publisher_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("publisher").verbose_name
+        self.assertEqual(field_label, "publisher")
+
+    def test_year_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("year").verbose_name
+        self.assertEqual(field_label, "year")
+
+    def test_info_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("info").verbose_name
+        self.assertEqual(field_label, "info")
+
+    # test str representation
+    def test_string_representation(self):
+        music = Music.objects.get(id=1)
+        performer_field = music.performer
+        name_cd_field = music.name_cd
+        self.assertEqual(str(music), performer_field + name_cd_field)
+
+    # test str in date field
+    def test_str_in_year_should_fail(self):
+        music = Music(year="Two thousand ten")
+        self.assertFalse(str(music), True)
+
+    # test max len for performer field
+    def test_performer_name_max_length(self):
+        music = Music.objects.get(id=1)
+        max_length = music._meta.get_field('performer').max_length
+        self.assertEqual(max_length, 64)
