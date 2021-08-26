@@ -17,3 +17,29 @@ class MusicModelTest(TestCase):
                              info="This is some example track list",
                              category_models=None
                              )
+
+    # test for labels fields
+    def test_performer_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("performer").verbose_name
+        self.assertEqual(field_label, "performer")
+
+    def test_name_cd_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("name_cd").verbose_name
+        self.assertEqual(field_label, "name cd")
+
+    def test_publisher_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("publisher").verbose_name
+        self.assertEqual(field_label, "publisher")
+
+    def test_year_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("year").verbose_name
+        self.assertEqual(field_label, "year")
+
+    def test_info_label(self):
+        music = Music.objects.get(id=1)
+        field_label = music._meta.get_field("info").verbose_name
+        self.assertEqual(field_label, "info")
