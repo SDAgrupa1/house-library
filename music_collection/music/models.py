@@ -3,19 +3,20 @@ from django.db import models
 #model Category
 class Category(models.Model):  # model 1 do 1 - 1 płycie będzie przyslugiwał 1 kategoria
     CATEGORY = {
-        (0, "Rock"),
-        (1, "Metal"),
-        (2, "Blues"),
-        (3, "Jazz"),
-        (4, "Classical"),
-        (5, "Country"),
-        (6, "Electronic"),
+        (0, "Blues"),
+        (1, "Classical"),
+        (2, "Country"),
+        (3, "Disco-Polo"),
+        (4, "Electronic"),
+        (5, "Jazz"),
+        (6, "Metal"),
         (7, "Pop"),
         (8, "R&B"),
         (9, "Rap"),
         (10, "Reaggae"),
-        (11, "Soundtrack"),
-        (12, "Triphop"),
+        (11, "Rock"),
+        (12, "Soundtrack"),
+        (13, "Triphop"),
     }
 
     category = models.PositiveSmallIntegerField(default=0, choices=CATEGORY)
@@ -33,6 +34,7 @@ class Music(models.Model):
     # rating = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     info = models.TextField(default="")
     category_models = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
-
+    cover = models.ImageField(upload_to="covers", null=True, blank=True)
+    
     def __str__(self):
-        return self.performer + f'{self.name_cd}'
+        return f'{self.performer} {self.name_cd}'
