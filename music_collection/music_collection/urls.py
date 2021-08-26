@@ -19,5 +19,5 @@ from music import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cds/', views.CdTemplateView.as_view())
+    path('cds/', views.CdTemplateView.as_view()),
 ]

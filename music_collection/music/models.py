@@ -18,6 +18,11 @@ class Category(models.Model):  # model 1 do 1 - 1 płycie będzie przyslugiwał 
         (12, "Triphop"),
     }
 
+    category = models.PositiveSmallIntegerField(default=0, choices=CATEGORY)
+
+    def __str__(self):
+        return f'{self.category}'
+
 
 #model MUSIC
 class Music(models.Model):
