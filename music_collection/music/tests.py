@@ -55,3 +55,9 @@ class MusicModelTest(TestCase):
     def test_str_in_year_should_fail(self):
         music = Music(year="Two thousand ten")
         self.assertFalse(str(music), True)
+
+    # test max len for performer field
+    def test_performer_name_max_length(self):
+        music = Music.objects.get(id=1)
+        max_length = music._meta.get_field('performer').max_length
+        self.assertEqual(max_length, 64)
