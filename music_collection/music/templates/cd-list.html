@@ -5,8 +5,15 @@
     <title>Kolekcja płyt</title>
 </head>
 <body>
-    {% for cd in cds%}
-        {{ cd }}
-    {% endfor %}
+    {% if cds|length == 0 %}
+        <h2> Brak płyt w kolekcji</h2>
+    {% else %}
+        <h2> Ilość płyt płyt w kolekcji: {{ cds|length }}</h2>
+
+        {% for cd in cds%}
+           <h3>{{ cd }}</h3>
+            <p> {{ music.info }}</p>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
