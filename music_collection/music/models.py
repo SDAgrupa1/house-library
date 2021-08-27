@@ -30,4 +30,10 @@ class Music(models.Model):
     category_models = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
+<<<<<<< Updated upstream
         return self.performer + f'{self.name_cd}'
+=======
+        return f'{self.performer} {self.name_cd}'
+
+
+>>>>>>> Stashed changes

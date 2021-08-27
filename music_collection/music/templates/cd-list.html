@@ -5,8 +5,21 @@
     <title>Kolekcja płyt</title>
 </head>
 <body>
+<<<<<<< Updated upstream
     {% for cd in cds%}
         {{ cd }}
     {% endfor %}
+=======
+    {% if cds|length == 0 %}
+        <h2> Brak płyt w kolekcji</h2>
+    {% else %}
+        <h2> Ilość płyt płyt w kolekcji: {{ cds|length }}</h2>
+
+        {% for cd in cds%}
+           <a href="http://127.0.0.1:8000/cds/{{cd.id}}"><h3>{{ cd }}</h3></a>
+            <p> {{ cd.info }}</p>
+        {% endfor %}
+    {% endif %}
+>>>>>>> Stashed changes
 </body>
 </html>
