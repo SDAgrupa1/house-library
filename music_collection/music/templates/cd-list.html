@@ -5,11 +5,6 @@
     <title>Kolekcja płyt</title>
 </head>
 <body>
-<<<<<<< Updated upstream
-    {% for cd in cds%}
-        {{ cd }}
-    {% endfor %}
-=======
     {% if cds|length == 0 %}
         <h2> Brak płyt w kolekcji</h2>
     {% else %}
@@ -20,6 +15,9 @@
             <p> {{ cd.info }}</p>
         {% endfor %}
     {% endif %}
->>>>>>> Stashed changes
+           <h3>{{ cd }}</h3>
+            <p> {{ music.info }}</p>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

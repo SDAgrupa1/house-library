@@ -19,10 +19,6 @@ from music import views
 app_name = 'main-urls'
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< Updated upstream
-    path('cds/', views.CdTemplateView.as_view())
-=======
     path('cds/', views.CdTemplateView.as_view(), name='list-of-cds'),
     path('cds/<id>', views.cds_dynamic_lookup_view, name='cd-bio')
->>>>>>> Stashed changes
 ]
