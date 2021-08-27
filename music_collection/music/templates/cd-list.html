@@ -11,6 +11,10 @@
         <h2> Ilość płyt płyt w kolekcji: {{ cds|length }}</h2>
 
         {% for cd in cds%}
+           <a href="http://127.0.0.1:8000/cds/{{cd.id}}"><h3>{{ cd }}</h3></a>
+            <p> {{ cd.info }}</p>
+        {% endfor %}
+    {% endif %}
            <h3>{{ cd }}</h3>
             <p> {{ music.info }}</p>
         {% endfor %}

@@ -8,3 +8,10 @@ from .models import Music
 class CdTemplateView(TemplateView):
     template_name = 'cd-list.html'
     extra_context = {'cds':Music.objects.all()}
+
+def cds_dynamic_lookup_view(request, id):
+    cd = Music.objects.get(id=id)
+    context = {
+        "cds":cd
+    }
+    return render(request,"cd-details.html", context)
