@@ -25,6 +25,15 @@ class Category(models.Model):  # model 1 do 1 - 1 płycie będzie przyslugiwał 
         return f'{self.category}'
 
 
+class Availability(models.Model):
+    CHOICE = {
+        (0, 'Available'),
+        (1, 'Borrowed'),
+        (2, 'Lost'),
+    }
+    available = models.PositiveSmallIntegerField(default=0, choices=CHOICE)
+
+
 #model MUSIC
 class Music(models.Model):
     performer = models.CharField(max_length=64, blank=False, unique=True)
@@ -35,6 +44,7 @@ class Music(models.Model):
     info = models.TextField(default="")
     category_models = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
     cover = models.ImageField(upload_to="covers", null=True, blank=True)
-    
+    availability = models.OneToOneField(Availability, on_delete=models.CASCADE, null=True, blank=True)
+
     def __str__(self):
         return f'{self.performer} {self.name_cd}'
