@@ -45,15 +45,16 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">About us</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'about-us' %}">About us</a>
                 </li>
             </ul>
             <div>
                 {% if user.is_authenticated %}
-                    <a style="color:white">Logged: {{ user.get_email }}, </a>
-                    <a class="btn btn-sm btn-outline-secondary active" href="{% url 'logout' %}">Logout</a>
+                    <a style="color:white">Logged as: {{ user.get_username }} </a>
+                    <a class="btn btn-sm btn-outline-secondary active" href="#">Logout</a>
                 {% else %}
-                    <a class="btn btn-sm btn-outline-primary active" href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-sm btn-outline-primary active" href="#">Register</a>
+                    <a class="btn btn-sm btn-outline-primary active" href="#">Login</a>
                 {% endif %}
             </div>
         </div>
