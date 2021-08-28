@@ -15,9 +15,6 @@
             <p> {{ cd.info }}</p>
         {% endfor %}
     {% endif %}
-           <h3>{{ cd }}</h3>
-            <p> {{ music.info }}</p>
-        {% endfor %}
-    {% endif %}
+    <button><a href="{% url 'rate-music' %}">Oceń płytę</a></button>
 </body>
 </html>

@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 #model Category
@@ -50,5 +51,12 @@ class Music(models.Model):
         return f'{self.performer} {self.name_cd}'
 
 
+class Rating(models.Model):
+    review = models.TextField(default="", blank=True)
+    stars = models.PositiveSmallIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    music = models.ManyToManyField(Music)
+
+    def __str__(self):
+        return f'{self.stars} -> {self.review}'
 
 
