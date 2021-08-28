@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from .models import Music
@@ -7,8 +8,7 @@ from .models import Music
 
 class MusicModelTest(TestCase):
 
-    @classmethod
-    def setUpTestData(cls):
+    def setUp(self):
         # Set up non-modified object used by test methods
         Music.objects.create(performer="Madonna",
                              name_cd="Like a Prayer",
@@ -49,12 +49,13 @@ class MusicModelTest(TestCase):
         music = Music.objects.get(id=1)
         performer_field = music.performer
         name_cd_field = music.name_cd
-        self.assertEqual(str(music), performer_field + name_cd_field)
+        self.assertEqual(str(music), f"{performer_field} {name_cd_field}")
 
     # test str in date field
     def test_str_in_year_should_fail(self):
         music = Music(year="Two thousand ten")
-        self.assertFalse(str(music), True)
+        with self.assertRaises(ValidationError):
+            music.save()
 
     # test max len for performer field
     def test_performer_name_max_length(self):
