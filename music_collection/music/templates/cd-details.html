@@ -12,7 +12,16 @@
     <h1>Wydawca: {{cds.performer}}</h1>
     <h1>Informacje: {{cds.info}}</h1>
     <h1>Kategoria: {{cds.category_models}}</h1>
-
     <a href="http://127.0.0.1:8000/cds/"><button>Wróć na stronę główną</button></a>
+    <br>
+    <h1>Opinie</h1>
+    {% if ratings|length == 0 %}
+        <p>Brak opinii <button><a href="{% url 'rate-music' %}">Oceń płytę</button></a></p>
+    {% else %}
+        {% for rate in ratings %}
+            {{rate}} <br>
+        {% endfor %}
+        <button><a href="{% url 'rate-music' %}">Oceń płytę</a></button>
+    {% endif %}
 </body>
 </html>
