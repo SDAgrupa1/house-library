@@ -3,7 +3,6 @@ from pathlib import Path
 
 import dotenv
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 dotenv.load_dotenv()
@@ -89,13 +88,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (BASE_DIR / "static",)
+
+STATIC_ROOT = (BASE_DIR / "staticfiles")
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'my_media'
-
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-
