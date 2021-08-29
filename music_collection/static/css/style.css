@@ -1,0 +1,10 @@
+.my-class {
+    font-size: 160px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("../img/bg.jpg");
+    color: transparent;
+    background-size: contain;
+    -webkit-background-clip: text;
+}
