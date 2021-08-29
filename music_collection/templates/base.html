@@ -56,7 +56,7 @@
             </ul>
             <div style="display:flex">
                 {% if user.is_authenticated %}
-                    <div style="color:white; margin-right:10px">Logged as: {{ user.get_username }}</div>
+                    <div style="color:white; margin-right:10px">Hello: {{ user.get_username }}</div>
                     <div class="dropdown" style="margin-right:70px">
                         <a class="btn btn-sm btn-outline-secondary active dropdown-toggle"
                            id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="#">
@@ -77,10 +77,15 @@
         </div>
     </div>
 </nav>
-<div class="container-sm">
-    <div class="jumbotron" style="background-color:rgba(231, 232, 227, 0.95)">
-        {% block content %}{% endblock %}
+<main>
+    <div class="container-sm">
+        <div class="jumbotron" style="background-color:rgba(231, 232, 227, 0.95)">
+            {% block content %}{% endblock %}
+        </div>
     </div>
-</div>
+</main>
+<footer id="main-footer" style="">
+    <p>© Authors: Dream Team ONE</p>
+</footer>
 </body>
 </html>
