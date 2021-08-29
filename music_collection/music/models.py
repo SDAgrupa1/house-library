@@ -51,7 +51,7 @@ class Category(models.Model):
 
 class Availability(models.Model):
     AVAILABLE = "Available"
-    BORROWED = "Available"
+    BORROWED = "Borrowed"
 
     AVAILABILITY_CHOICES = [
         (AVAILABLE, "Available"),
