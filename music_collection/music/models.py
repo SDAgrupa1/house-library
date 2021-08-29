@@ -26,12 +26,22 @@ class Category(models.Model):  # model 1 do 1 - 1 płycie będzie przyslugiwał 
 
 
 class Availability(models.Model):
-    CHOICE = {
-        (0, 'Available'),
-        (1, 'Borrowed'),
-        (2, 'Lost'),
-    }
-    available = models.PositiveSmallIntegerField(default=0, choices=CHOICE)
+    AVAILABLE = "A"
+    BORROWED = "B"
+
+    AVAILABILITY_CHOICES = [
+        (AVAILABLE, "Available"),
+        (BORROWED, "Borrowed"),
+    ]
+    availability_choices = models.CharField(
+        max_length=1,
+        choices=AVAILABILITY_CHOICES,
+        unique=True,
+        null=True
+    )
+
+    def is_upperclass(self):
+        return self.availability_choices in {self.AVAILABILITY_CHOICES}
 
 
 class Music(models.Model):
