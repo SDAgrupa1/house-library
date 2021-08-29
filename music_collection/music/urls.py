@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 app_name = 'music-urls'
 urlpatterns = [
     path('cds/', views.CdTemplateView.as_view(), name='list-of-cds'),
