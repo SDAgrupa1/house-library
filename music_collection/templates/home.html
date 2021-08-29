@@ -1,8 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <h3>Welcome to House Library!</h3>
 <br>
-<p>This is our homepage</p>
+<p>Check our great library!</p>
 <br>
+<section class="home-main">
+    <figure>
+        <a href="#" class="music-bg img-circle"></a>
+        <h5>Music</h5>
+    </figure>
+    <figure>
+        <a href="#" class="book-bg img-circle home-disable"></a>
+        <h5 class="home-disable">Books</h5>
+    </figure>
+    <figure>
+        <a href="#" class="movie-bg img-circle home-disable"></a>
+        <h5 class="home-disable">Movies</h5>
+    </figure>
+</section>
 {% endblock %}
