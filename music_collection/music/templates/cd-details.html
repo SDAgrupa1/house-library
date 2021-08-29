@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CD Details</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
     <h1>Okładka: {{cds.cover}}</h1>
     <h1>Tytuł: {{cds.name_cd}}</h1>
     <h1>Wykonawca: {{cds.performer}}</h1>
@@ -12,16 +8,15 @@
     <h1>Wydawca: {{cds.performer}}</h1>
     <h1>Informacje: {{cds.info}}</h1>
     <h1>Kategoria: {{cds.category_models}}</h1>
-    <a href="{% url 'list-of-cds' %}"><button>Wróć na stronę główną</button></a>
+    <a href="{%url 'music-urls:list-of-cds' %}"><button>Wróć na stronę główną</button></a>
     <br>
     <h1>Opinie</h1>
     {% if ratings|length == 0 %}
-        <p>Brak opinii <button><a href="{% url 'rate-music' %}">Oceń płytę</button></a></p>
+        <p>Brak opinii <button><a href="{% url 'music-urls:rate' %}">Oceń płytę</button></a></p>
     {% else %}
         {% for rate in ratings %}
             {{rate}} <br>
         {% endfor %}
-        <button><a href="{% url 'rate-music' %}">Oceń płytę</a></button>
+        <button><a href="{% url 'music-urls:rate' %}">Oceń płytę</a></button>
     {% endif %}
-</body>
-</html>
+{% endblock %}

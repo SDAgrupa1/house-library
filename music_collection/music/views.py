@@ -24,7 +24,7 @@ def rate_music(request):
 
     if form.is_valid():
         form.save()
-        return redirect('list-of-cds')
+        return redirect('music-urls:list-of-cds')
 
 
 
