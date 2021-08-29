@@ -1,7 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
-#model Category
 class Category(models.Model):  # model 1 do 1 - 1 płycie będzie przyslugiwał 1 kategoria
     CATEGORY = {
         (0, "Blues"),
@@ -35,7 +34,6 @@ class Availability(models.Model):
     available = models.PositiveSmallIntegerField(default=0, choices=CHOICE)
 
 
-#model MUSIC
 class Music(models.Model):
     performer = models.CharField(max_length=64, blank=False, unique=True)
     name_cd = models.CharField(max_length=64, blank=False)
