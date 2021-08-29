@@ -1,6 +1,5 @@
-from pathlib import Path
 import os
-
+from pathlib import Path
 
 import dotenv
 
@@ -9,17 +8,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 dotenv.load_dotenv()
 
-
 SECRET_KEY = os.getenv("SECRET_KEY")
-
-
 
 DEBUG = os.getenv("DEBUG") == "TRUE"
 
 ALLOWED_HOSTS = []
-
-
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "music",
+    'music',
     'accounts',
 ]
 
@@ -47,7 +40,8 @@ ROOT_URLCONF = 'music_collection.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['music_collection/templates',
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,16 +56,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'music_collection.wsgi.application'
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -88,9 +78,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -101,9 +88,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-
-
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
@@ -113,4 +97,6 @@ MEDIA_ROOT = 'my_media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.User'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
