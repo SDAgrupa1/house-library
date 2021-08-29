@@ -14,6 +14,7 @@
            <a href="http://127.0.0.1:8000/cds/{{cd.id}}"><h3>{{ cd }}</h3></a>
             <p> {{ cd.info }}</p>
         {% endfor %}
+        <button><a href="{% url 'rate-music' %}">Oceń płytę</a></button>
     {% endif %}
 </body>
 </html>
