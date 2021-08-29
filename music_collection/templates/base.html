@@ -19,10 +19,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
 
-    <title>House Library</title>
+    <title>{% block title %}House Library{% endblock %}</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#563d7c">
+<body style="background-image: url('../static/img/home-bg-books.jpg')">
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#5f4938">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">Welcome</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -78,7 +78,7 @@
     </div>
 </nav>
 <div class="container-sm">
-    <div class="jumbotron" style="background-color:#f1e8ff">
+    <div class="jumbotron" style="background-color:rgba(231, 232, 227, 0.95)">
         {% block content %}{% endblock %}
     </div>
 </div>
