@@ -50,15 +50,15 @@ class Category(models.Model):
 
 
 class Availability(models.Model):
-    AVAILABLE = "A"
-    BORROWED = "B"
+    AVAILABLE = "Available"
+    BORROWED = "Available"
 
     AVAILABILITY_CHOICES = [
         (AVAILABLE, "Available"),
         (BORROWED, "Borrowed"),
     ]
     availability_choices = models.CharField(
-        max_length=1,
+        max_length=50,
         choices=AVAILABILITY_CHOICES,
         unique=True,
         null=True
@@ -66,6 +66,9 @@ class Availability(models.Model):
 
     def is_upperclass(self):
         return self.availability_choices in {self.AVAILABILITY_CHOICES}
+
+    def __str__(self):
+        return f'{self.availability_choices}'
 
 
 class Music(models.Model):
