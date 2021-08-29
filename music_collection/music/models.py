@@ -39,7 +39,6 @@ class Music(models.Model):
     name_cd = models.CharField(max_length=64, blank=False)
     publisher = models.CharField(max_length=64, blank=False)
     year = models.DateField(null=True, blank=True)
-    # rating = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     info = models.TextField(default="")
     category_models = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
     cover = models.ImageField(upload_to="covers", null=True, blank=True)
@@ -52,7 +51,8 @@ class Music(models.Model):
 class Rating(models.Model):
     review = models.TextField(default="", blank=True)
     stars = models.PositiveSmallIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
-    music = models.ManyToManyField(Music)
+    music = models.ForeignKey(Music, null=True, default=None, related_name='ratings', on_delete=models.CASCADE,
+                              blank=True)
 
     def __str__(self):
         return f'{self.stars} -> {self.review}'
