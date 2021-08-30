@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -101,3 +102,15 @@ class Rating(models.Model):
 
     def __str__(self):
         return f'{self.stars} -> {self.review}'
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    about_me = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
+    facebook_url = models.CharField(max_length=255, null=True, blank=True,)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True,)
+    linkedin_url = models.CharField(max_length=255, null=True, blank=True,)
+
+    def __str__(self):
+        return str(self.user)
