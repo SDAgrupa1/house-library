@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CD - Your rate</title>
-</head>
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
 <body>
     <form method="post">
         {% csrf_token %}
         {{form}}
-        <a href="list-of-cds"><button type="submit">Dodaj swoją recenzje</button></a>
+        <a href="{%url 'music-urls:list-of-cds' %}"><button type="submit">Dodaj swoją recenzje</button></a>
     </form>
-</body>
-</html>
+{% endblock %}

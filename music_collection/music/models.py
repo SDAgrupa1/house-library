@@ -1,37 +1,75 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.contrib.auth.models import User
 
-class Category(models.Model):  # model 1 do 1 - 1 płycie będzie przyslugiwał 1 kategoria
-    CATEGORY = {
-        (0, "Blues"),
-        (1, "Classical"),
-        (2, "Country"),
-        (3, "Disco-Polo"),
-        (4, "Electronic"),
-        (5, "Jazz"),
-        (6, "Metal"),
-        (7, "Pop"),
-        (8, "R&B"),
-        (9, "Rap"),
-        (10, "Reaggae"),
-        (11, "Rock"),
-        (12, "Soundtrack"),
-        (13, "Triphop"),
-    }
 
-    category = models.PositiveSmallIntegerField(default=0, choices=CATEGORY)
+class Category(models.Model):
+    BLUES = "Blues"
+    CLASSICAL = "Classical"
+    COUNTRY = "Country"
+    DISCO_POLO = "Disco-Polo"
+    ELECTRONIC = "Electronic"
+    JAZZ = "Jazz"
+    METAL = "Metal"
+    POP = "Pop"
+    RB = "R&B"
+    RAP = "Rap"
+    REAGGAE = "Reaggae"
+    ROCK = "Rock"
+    SOUNDTRACK = "Soundtrack"
+    TRIPHOP = "Triphop"
+
+    CATEGORY_CHOOSE = [
+        (BLUES, "Blues"),
+        (CLASSICAL, "Classical"),
+        (COUNTRY, "Country"),
+        (DISCO_POLO, "Disco-Polo"),
+        (ELECTRONIC, "Electronic"),
+        (JAZZ, "Jazz"),
+        (METAL, "Metal"),
+        (POP, "Pop"),
+        (RB, "R&B"),
+        (RAP, "Rap"),
+        (REAGGAE, "Reaggae"),
+        (ROCK, "Rock"),
+        (SOUNDTRACK, "Soundtrack"),
+        (TRIPHOP, "Triphop"),
+    ]
+    category_choose = models.CharField(
+        max_length=30,
+        choices=CATEGORY_CHOOSE,
+        unique=True,
+        null=True
+    )
+
+    @property
+    def is_upperclass(self):
+        return self.category_choose in {self.CATEGORY_CHOOSE}
 
     def __str__(self):
-        return f'{self.category}'
+        return f'{self.category_choose}'
 
 
 class Availability(models.Model):
-    CHOICE = {
-        (0, 'Available'),
-        (1, 'Borrowed'),
-        (2, 'Lost'),
-    }
-    available = models.PositiveSmallIntegerField(default=0, choices=CHOICE)
+    AVAILABLE = "Available"
+    BORROWED = "Borrowed"
+
+    AVAILABILITY_CHOICES = [
+        (AVAILABLE, "Available"),
+        (BORROWED, "Borrowed"),
+    ]
+    availability_choices = models.CharField(
+        max_length=50,
+        choices=AVAILABILITY_CHOICES,
+        unique=True,
+        null=True
+    )
+
+    def is_upperclass(self):
+        return self.availability_choices in {self.AVAILABILITY_CHOICES}
+
+    def __str__(self):
+        return f'{self.availability_choices}'
 
 
 class Music(models.Model):
@@ -58,3 +96,13 @@ class Rating(models.Model):
         return f'{self.stars} -> {self.review}'
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    about_me = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
+    facebook_url = models.CharField(max_length=255, null=True, blank=True,)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True,)
+    linkedin_url = models.CharField(max_length=255, null=True, blank=True,)
+
+    def __str__(self):
+        return str(self.user)
