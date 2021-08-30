@@ -54,3 +54,21 @@
     opacity: 0.25;
     color: #333;
 }
+
+#main-footer {
+    height: 40px;
+    background-color: #5f4938;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-footer p {
+    font-size: 14px;
+}
+
+.jumbotron{
+    height: 100vh;
+    margin-bottom: 0;
+}
