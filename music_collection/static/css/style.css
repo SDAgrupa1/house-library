@@ -1,0 +1,56 @@
+.my-class {
+    font-size: 160px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("../img/bg.jpg");
+    color: transparent;
+    background-size: contain;
+    -webkit-background-clip: text;
+}
+
+.home-main {
+    display: flex;
+    flex-direction: row;
+    padding: 0 100px;
+    justify-content: space-around;
+}
+
+.home-main figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.music-bg,
+.book-bg,
+.movie-bg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.music-bg {
+    background-image: url("../img/home-music.jpg");
+}
+
+.book-bg {
+    background-image: url("../img/home-book.jpg");
+}
+
+.movie-bg {
+    background-image: url("../img/home-movie.jpg");
+}
+
+.img-circle {
+    border-radius: 10%;
+}
+
+.home-disable {
+    cursor: not-allowed;
+    opacity: 0.25;
+    color: #333;
+}

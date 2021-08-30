@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Kolekcja płyt</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
     {% if cds|length == 0 %}
         <h2> Brak płyt w kolekcji</h2>
     {% else %}
         <h2> Ilość płyt płyt w kolekcji: {{ cds|length }}</h2>
 
         {% for cd in cds%}
-           <a href="http://127.0.0.1:8000/cds/{{cd.id}}"><h3>{{ cd }}</h3></a>
+           <a href="./{{cd.id}}"><h3>{{ cd }}</h3></a>
             <p> {{ cd.info }}</p>
         {% endfor %}
-        <button><a href="{% url 'rate-music' %}">Oceń płytę</a></button>
     {% endif %}
-</body>
-</html>
+{% endblock %}
