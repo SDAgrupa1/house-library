@@ -72,7 +72,8 @@ class Availability(models.Model):
         return f'{self.availability_choices}'
 
 
-class Music(models.Model):
+class MusicAlbum(models.Model):
+    performer = models.CharField(max_length=64, blank=False, unique=True)
     name_cd = models.CharField(max_length=64, blank=False)
     publisher = models.CharField(max_length=64, blank=False)
     year = models.DateField(null=True, blank=True)
@@ -97,7 +98,7 @@ class Performer(models.Model):
 class Rating(models.Model):
     review = models.TextField(default="", blank=True)
     stars = models.PositiveSmallIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
-    music = models.ForeignKey(Music, null=True, default=None, related_name='ratings', on_delete=models.CASCADE,
+    music = models.ForeignKey(MusicAlbum, null=True, default=None, related_name='ratings', on_delete=models.CASCADE,
                               blank=True)
 
     def __str__(self):
