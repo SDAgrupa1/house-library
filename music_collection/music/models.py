@@ -72,7 +72,6 @@ class Availability(models.Model):
 
 
 class Music(models.Model):
-    performer = models.CharField(max_length=64, blank=False, unique=True)
     name_cd = models.CharField(max_length=64, blank=False)
     publisher = models.CharField(max_length=64, blank=False)
     year = models.DateField(null=True, blank=True)
@@ -82,7 +81,16 @@ class Music(models.Model):
     availability = models.OneToOneField(Availability, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.performer} {self.name_cd}'
+        return f'{self.name_cd}'
+
+
+class Performer(models.Model):
+    name = models.CharField(max_length=32)
+    second_name = models.CharField(max_length=32)
+    albums = models.ManyToManyField(Music)
+
+    def __str__(self):
+        return f'{self.name} + {self.second_name}'
 
 
 class Rating(models.Model):
