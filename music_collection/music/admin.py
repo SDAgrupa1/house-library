@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Music, Category, Availability, Rating, Performer, Profile #profie should go to accounts app
+from .models import MusicAlbum, Category, Availability, Rating, Performer, Profile #profie should go to accounts app
 
 
 admin.site.register(MusicAlbum)
