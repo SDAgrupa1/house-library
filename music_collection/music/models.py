@@ -89,7 +89,7 @@ class MusicAlbum(models.Model):
 class Performer(models.Model):
     name = models.CharField(max_length=32)
     second_name = models.CharField(max_length=32)
-    albums = models.ManyToManyField(MusicAlbum, related_name='+')
+    albums = models.ManyToManyField(MusicAlbum, related_name='albums')
 
     def __str__(self):
         return f'{self.name} + {self.second_name}'
