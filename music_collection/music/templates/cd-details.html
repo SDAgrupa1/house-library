@@ -1,23 +1,39 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}CD Details{% endblock %}
+{% block title %}Album Details{% endblock %}
 {% block content %}
-    <h1>Okładka: {{cds.cover}}</h1>
-    <h1>Tytuł: {{cds.name_cd}}</h1>
-    <h1>Wykonawca: {{cds.performer}}</h1>
-    <h1>Rok: {{cds.year}}</h1>
-    <h1>Wydawca: {{cds.performer}}</h1>
-    <h1>Informacje: {{cds.info}}</h1>
-    <h1>Kategoria: {{cds.category_models}}</h1>
-    <a href="{%url 'music-urls:list-of-cds' %}"><button>Wróć na stronę główną</button></a>
-    <br>
-    <h1>Opinie</h1>
+<section>
+    <h5>COVER: {{ cds.cover }}</h5>
+    <h5>Performer: {{ cds.performer }}</h5>
+    <h5>Title: {{ cds.name_cd }}</h5>
+    <h5>Year: {{ cds.year }}</h5>
+    <h5>Publisher: {{ cds.performer }}</h5>
+    <h5>Tracklist: {{ cds.info }}</h5>
+    <h5>Category: {{ cds.category_models }}</h5>
+    <a href="{%url 'music-urls:list-of-cds' %}">
+        <button type="button" class="btn btn-secondary btn-sm">Back to album list</button></a>
+</section>
+<br>
+<br>
+<section>
+    <h4>Reviews</h4>
     {% if ratings|length == 0 %}
-        <p>Brak opinii <button><a href="{% url 'music-urls:rate' %}">Oceń płytę</button></a></p>
+        <p>No ratings</p>
+        <a href="{% url 'music-urls:rate' %}">
+            <button type="button" class="btn btn-secondary btn-sm">
+            Leave rating
+            </button>
+        <br>
     {% else %}
         {% for rate in ratings %}
-            {{rate}} <br>
+            {{ rate }}
+            <br>
         {% endfor %}
-        <button><a href="{% url 'music-urls:rate' %}">Oceń płytę</a></button>
+            <a href="{% url 'music-urls:rate' %}">
+                <button type="button" class="btn btn-secondary btn-sm">
+                    Leave rating
+                </button>
+            </a>
     {% endif %}
+</section>
 {% endblock %}
