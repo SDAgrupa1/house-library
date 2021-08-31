@@ -2,13 +2,20 @@
 {% load static %}
 {% block title %}Music Albums{% endblock %}
 {% block content %}
+<div>
+    <div class="cd-list-title">
     {% if cds|length == 0 %}
-        <h2> Brak płyt w kolekcji</h2>
+        <h2>No albums in collection</h2>
     {% else %}
-        <h2> Ilość płyt płyt w kolekcji: {{ cds|length }}</h2>
-
+        <h2>Numbers of albums: {{ cds|length }}</h2>
+    </div>
+    <div class="list-group">
         {% for cd in cds%}
-           <a href="./{{cd.id}}"><h3>{{ cd }}</h3></a>
+        <a href="./{{cd.id}}" class="list-group-item list-group-item-action list-group-item-light">
+            {{ forloop.counter }}. {{ cd }}
+        </a>
         {% endfor %}
+    </div>
     {% endif %}
+</div>
 {% endblock %}
