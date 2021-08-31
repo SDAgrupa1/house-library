@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Music Albums{% endblock %}
 {% block content %}
     {% if cds|length == 0 %}
         <h2> Brak płyt w kolekcji</h2>
