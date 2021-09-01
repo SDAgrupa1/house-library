@@ -83,3 +83,11 @@
     justify-content: space-around;
     margin: 0 0 20;
 }
+
+.album-info {
+    width: 25vw;
+}
+
+.album-tracklist {
+    width: 30vw;
+}

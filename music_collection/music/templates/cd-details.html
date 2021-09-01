@@ -3,15 +3,44 @@
 {% block title %}Album Details{% endblock %}
 {% block content %}
 <section>
-    <h5>COVER: {{ cds.cover }}</h5>
-    <h5>Performer: {{ cds.performer }}</h5>
-    <h5>Title: {{ cds.name_cd }}</h5>
-    <h5>Year: {{ cds.year }}</h5>
-    <h5>Publisher: {{ cds.performer }}</h5>
-    <h5>Tracklist: {{ cds.info }}</h5>
-    <h5>Category: {{ cds.category_models }}</h5>
-    <a href="{%url 'music-urls:list-of-cds' %}">
+    <div class="media">
+        <div>
+            <figure class="figure">
+                <img src="#" width="375px" class="figure-img img-fluid rounded" alt="cd-cover">
+                <figcaption class="figure-caption">{{ cds.cover }}</figcaption>
+            </figure>
+        </div>
+        <div class="album-info">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h6>Performer:</h6>{{ cds.performer }}</li>
+                <li class="list-group-item">
+                    <h6>Title:</h6>{{ cds.name_cd }}</li>
+                <li class="list-group-item">
+                    <h6>Year:</h6>{{ cds.year }}</li>
+                <li class="list-group-item">
+                    <h6>Publisher:</h6>{{ cds.performer }}</li>
+                <li class="list-group-item">
+                    <h6>Category:</h6>{{ cds.category_models }}</li>
+            </ul>
+        </div>
+        <div>
+            <li class="list-group-item album-tracklist">{{ cds.info }}</li>
+        </div>
+    </div>
+
+    <div>
+        <a href="{%url 'music-urls:list-of-cds' %}">
         <button type="button" class="btn btn-secondary btn-sm">Back to album list</button></a>
+        {% if user.is_authenticated %}
+            <a href="#">
+                <button type="button" class="btn btn-secondary btn-sm">Edit album</button>
+            </a>
+            <a href="#">
+                <button type="button" class="btn btn-secondary btn-sm">Delete album</button>
+            </a>
+        {% endif %}
+    </div>
 </section>
 <br>
 <br>
