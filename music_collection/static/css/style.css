@@ -72,3 +72,12 @@
     height: 100vh;
     margin-bottom: 0;
 }
+
+.element{
+  shape-image-threshold: 1.5;
+  float: center;
+  shape-outside: circle(30%);
+  width: 150px;
+  height: 150px;
+  border-radius:50%;
+}
