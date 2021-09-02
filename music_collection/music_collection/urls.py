@@ -10,6 +10,7 @@ urlpatterns = [
     path('home/', views_basic.home_view, name='home'),
     path('about-us/', views_basic.about_us_view, name='about-us'),
     path('music/', include('music.urls')),
+    path('performer/', include('music.urls')),
     path('error-404/', views_basic.error_404_view, name='error-404'),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
