@@ -1,60 +1,36 @@
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
 
-
-User = get_user_model()
-
-class RegisterForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), max_length=255)
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}),max_length=50)
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}),max_length=50)
-
-    class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'password2']
-
-
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), max_length=255)
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}),max_length=50)
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}),max_length=50)
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
 
         self.fields['username'].widget.attrs['class'] = 'form-control'
-        self.fields['password'].widget.attrs['class'] = 'form-control'
+        self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
-
-class EditProfileView(UserChangeForm):
+class EditProfileForm(UserChangeForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), max_length=255)
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
-    last_login = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
-    date_joined = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
 
 
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'last_login', 'date_joined']
+        fields = ['username', 'first_name', 'last_name', 'email']
 
-class EditForm():
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), max_length=255)
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
-
-    class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'password2']
 
 
 class PasswordChangingForm(PasswordChangeForm):
