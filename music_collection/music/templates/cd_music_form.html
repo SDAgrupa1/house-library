@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}New Music Album{% endblock %}
 {% block content %}
-<section>
-    <div>
-        <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-            <div>
-                <button type="submit" class="btn btn-secondary btn-sm">Add new music album</button>
-                {% include 'redirect-album-list.html' %}
-            </div>
-        </form>
-    </div>
+<section style="width:930px">
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+        <br>
+        <div>
+            <button type="submit" class="btn btn-secondary btn-sm">Confirm</button>
+            {% include 'redirect-album-list.html' %}
+        </div>
+    </form>
 </section>
 {% endblock %}
