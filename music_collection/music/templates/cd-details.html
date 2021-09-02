@@ -5,10 +5,15 @@
 <section>
     <div class="media">
         <div>
-            <figure class="figure">
-                <img src="#" width="375px" class="figure-img img-fluid rounded" alt="cd-cover">
-                <figcaption class="figure-caption">{{ cds.cover }}</figcaption>
-            </figure>
+            {% if not cds.cover %}
+                <figure class="figure">
+                    <img src="#" width="385px"
+                         class="figure-img img-fluid rounded" alt="cd-cover">
+                </figure>
+            {% else %}
+                <figure class="figure">
+                    <img src="{{ cds.cover.url }}" width="385px" class="figure-img img-fluid rounded" alt="cd-cover">
+            {% endif %}
         </div>
         <div class="album-info">
             <ul class="list-group">

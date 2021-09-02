@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.urls import path
+from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 from . import views
 
@@ -16,3 +18,6 @@ urlpatterns = [
     path('performer/edit/', views.edit_performer, name='edit_performer'),
     path('performer/delete/', views.delete_performer, name='delete_performer'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
