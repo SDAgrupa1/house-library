@@ -75,7 +75,7 @@ class Availability(models.Model):
 class MusicAlbum(models.Model):
     performer = models.CharField(max_length=64, blank=False, unique=True)
     name_cd = models.CharField(max_length=64, blank=False)
-    publisher = models.CharField(max_length=64, blank=False)
+    publisher = models.CharField(max_length=64, blank=False, )
     year = models.IntegerField(null=True, blank=True)
     info = models.TextField(default="")
     category_models = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
@@ -88,11 +88,10 @@ class MusicAlbum(models.Model):
 
 class Performer(models.Model):
     name = models.CharField(max_length=32)
-    second_name = models.CharField(max_length=32)
     albums = models.ManyToManyField(MusicAlbum, related_name='albums')
 
     def __str__(self):
-        return f'{self.name} + {self.second_name}'
+        return f'{self.name}'
 
 
 class Rating(models.Model):
@@ -105,13 +104,4 @@ class Rating(models.Model):
         return f'{self.stars} -> {self.review}'
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    about_me = models.TextField()
-    profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
-    facebook_url = models.CharField(max_length=255, null=True, blank=True,)
-    instagram_url = models.CharField(max_length=255, null=True, blank=True,)
-    linkedin_url = models.CharField(max_length=255, null=True, blank=True,)
 
-    def __str__(self):
-        return str(self.user)

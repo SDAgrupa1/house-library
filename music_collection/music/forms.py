@@ -1,17 +1,18 @@
 from django.forms import ModelForm, TextInput, Select, Textarea, FileInput, NumberInput
-from .models import Rating, MusicAlbum
+from .models import Rating, MusicAlbum, Performer
 
 
 class RatingForm(ModelForm):
     class Meta:
         model = Rating
         fields = ['review', 'stars', 'music']
-
+        
         widgets = {
             'review': Textarea(attrs={'class': 'form-control'}),
             'stars': NumberInput(attrs={'class': 'form-control'}),
             'music': Select(attrs={'class': 'form-control'}),
         }
+
 
 
 class MusicForm(ModelForm):
@@ -29,3 +30,9 @@ class MusicForm(ModelForm):
             'cover': FileInput(attrs={'class': 'form-control'}),
             'availability': Select(attrs={'class': 'form-control'}),
         }
+
+        
+class PerformerForm(ModelForm):
+    class Meta:
+        model = Performer
+        fields = ['name']
