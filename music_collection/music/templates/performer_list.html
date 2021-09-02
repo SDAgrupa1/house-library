@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Performer List{% endblock %}
+{% block content %}
+<div>
+    <div class="performer-list-name">
+    {% if performer_list|length == 0 %}
+        <h2>No performer in collection</h2>
+    {% else %}
+        <h2>Numbers of performer: {{ performer_list|length }}</h2>
+    </div>
+    <div class="list-group">
+        {% for performer in performers%}
+        <a href="./{{[performer].id}}" class="list-group-item list-group-item-action list-group-item-light">
+            {{ forloop.counter }}. {{ performer }}
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'music-urls:performer/new' %}">
+        <button type="button" class="btn btn-secondary btn-sm">Add new Performer</button></a>
+    {% endif %}
+</div>
