@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}New Music album{% endblock %}
+{% block title %}New Performer{% endblock %}
 {% block content %}
 <section>
     <div>
         <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
-        <button type="submit" class="btn btn-secondary btn-sm">Add new music album</button>
+        <button type="submit" class="btn btn-secondary btn-sm">Add new performer</button>
         </form>
     </div>
     <div>
         <a href="{%url 'music-urls:list-of-cds' %}">
-        <button type="button" class="btn btn-secondary btn-sm">Back to album list</button></a>
+        <button type="button" class="btn btn-secondary btn-sm">Back to performer list</button></a>
     </div>
 </section>
 {% endblock %}

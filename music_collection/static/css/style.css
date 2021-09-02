@@ -73,7 +73,31 @@
     margin-bottom: 0;
 }
 
-.jumbotron{
+.jumbotron {
     height: 100vh;
     margin-bottom: 0;
 }
+
+.element {
+  shape-image-threshold: 1.5;
+  float: center;
+  shape-outside: circle(30%);
+  width: 150px;
+  height: 150px;
+  border-radius:50%;
+}
+
+.cd-list-title {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 20;
+}
+
+.album-info {
+    width: 25vw;
+}
+
+.album-tracklist {
+    width: 30vw;
+}
+

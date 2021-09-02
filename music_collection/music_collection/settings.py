@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'music',
     'accounts',
+    'bootstrapform',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
