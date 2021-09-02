@@ -19,7 +19,8 @@
       {% csrf_token %}
       {{ form|bootstrap}}
       </br>
-      <button type="button" class="btn btn-dark">Login <i class="fas fa-sign-in-alt"></i></i></button>
+      <button type="submit" class="btn btn-dark"><a href="{% url 'home' %}">Login</a>
+            <i class="fas fa-sign-in-alt"></i></i></button>
     </form>
   </fieldset>
           </div>
