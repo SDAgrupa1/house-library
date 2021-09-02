@@ -4,8 +4,8 @@
     <h1> Are You sure to delete {{ music.name_cd }}?</h1>
     <form method="post">
         {% csrf_token %}
-        <button type="submit"> Yes, I'm sure, pleas delete that Album</button>
+        <button type="submit">Yes, I'm sure, pleas delete that Album</button>
     </form>
-    <a href="{%url 'music-urls:list-of-cds' %}"><button>Wróć na stronę główną</button></a>
+    <a href="{%url 'music-urls:list-of-cds' %}"><button>Back to album list</button></a>
 
 {% endblock %}

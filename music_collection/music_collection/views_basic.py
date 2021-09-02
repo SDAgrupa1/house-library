@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 
 def home_view(request):
@@ -20,3 +21,7 @@ def error_404_view(request):
         request,
         template_name="404.html"
     )
+
+
+def redirect_root(request):
+    return redirect("/home/")
