@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% block title %}New Music Album{% endblock %}
 {% block content %}
 <section>
     <table>
         <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_table }}
+        {{ form }}
     </table>
-            <br>
-            <div>
-                {% include 'redirect-album-list.html' %}
-                <button type="submit" class="btn btn-success btn-sm">Confirm</button>
-            </div>
+        <br>
+        <div>
+            {% include 'redirect-album-list.html' %}
+            <button type="submit" class="btn btn-success btn-sm">Confirm</button>
+        </div>
         </form>
-
 </section>
 {% endblock %}
