@@ -38,7 +38,7 @@ def new_music_album(request):
 
     if form.is_valid():
         form.save()
-        return redirect(CdTemplateView)
+        return redirect('music-urls:list-of-cds')
     return render(request, 'cd_music_form.html', {'form': form})
 
 

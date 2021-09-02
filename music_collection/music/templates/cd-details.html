@@ -34,35 +34,35 @@
         <button type="button" class="btn btn-secondary btn-sm">Back to album list</button></a>
         {% if user.is_authenticated %}
             <a href="#">
-                <button type="button" class="btn btn-secondary btn-sm">Edit album</button>
+                <button type="button" class="btn btn-info btn-sm">Edit album</button>
             </a>
             <a href="#">
-                <button type="button" class="btn btn-secondary btn-sm">Delete album</button>
+                <button type="button" class="btn btn-danger btn-sm">Delete album</button>
             </a>
         {% endif %}
     </div>
 </section>
 <br>
-<br>
 <section>
-    <h4>Reviews</h4>
-    {% if ratings|length == 0 %}
-        <p>No ratings</p>
-        <a href="{% url 'music-urls:rate' %}">
-            <button type="button" class="btn btn-secondary btn-sm">
-            Leave rating
-            </button>
-        <br>
-    {% else %}
-        {% for rate in ratings %}
-            {{ rate }}
+    <div>
+        <h4>Reviews</h4>
+        {% if ratings|length == 0 %}
+            <p>No ratings</p>
             <br>
-        {% endfor %}
+        {% else %}
+            {% for rate in ratings %}
+                {{ rate }}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        {% if user.is_authenticated %}
             <a href="{% url 'music-urls:rate' %}">
                 <button type="button" class="btn btn-secondary btn-sm">
                     Leave rating
                 </button>
             </a>
-    {% endif %}
+        {% endif %}
+    </div>
 </section>
 {% endblock %}
