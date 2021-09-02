@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 <h3>Welcome to House Library!</h3>
 <br>
@@ -8,7 +7,7 @@
 <br>
 <section class="home-main">
     <figure>
-        <a href="#" class="music-bg img-circle"></a>
+        <a href="{% url 'music-urls:list-of-cds' %}" class="music-bg img-circle"></a>
         <h5>Music</h5>
     </figure>
     <figure>

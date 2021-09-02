@@ -1,22 +1,68 @@
-{% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Album Details{% endblock %}
 {% block content %}
-    <h1>Okładka: {{cds.cover}}</h1>
-    <h1>Tytuł: {{cds.name_cd}}</h1>
-    <h1>Wykonawca: {{cds.performer}}</h1>
-    <h1>Rok: {{cds.year}}</h1>
-    <h1>Wydawca: {{cds.performer}}</h1>
-    <h1>Informacje: {{cds.info}}</h1>
-    <h1>Kategoria: {{cds.category_models}}</h1>
-    <a href="{%url 'music-urls:list-of-cds' %}"><button>Wróć na stronę główną</button></a>
-    <br>
-    <h1>Opinie</h1>
+<section>
+    <div class="media">
+        <div>
+            <figure class="figure">
+                <img src="#" width="375px" class="figure-img img-fluid rounded" alt="cd-cover">
+                <figcaption class="figure-caption">{{ cds.cover }}</figcaption>
+            </figure>
+        </div>
+        <div class="album-info">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h6>Performer:</h6>{{ cds.performer }}</li>
+                <li class="list-group-item">
+                    <h6>Title:</h6>{{ cds.name_cd }}</li>
+                <li class="list-group-item">
+                    <h6>Year:</h6>{{ cds.year }}</li>
+                <li class="list-group-item">
+                    <h6>Publisher:</h6>{{ cds.performer }}</li>
+                <li class="list-group-item">
+                    <h6>Category:</h6>{{ cds.category_models }}</li>
+            </ul>
+        </div>
+        <div>
+            <li class="list-group-item album-tracklist">{{ cds.info }}</li>
+        </div>
+    </div>
+
+    <div>
+        <a href="{%url 'music-urls:list-of-cds' %}">
+        <button type="button" class="btn btn-secondary btn-sm">Back to album list</button></a>
+        {% if user.is_authenticated %}
+            <a href="#">
+                <button type="button" class="btn btn-secondary btn-sm">Edit album</button>
+            </a>
+            <a href="#">
+                <button type="button" class="btn btn-secondary btn-sm">Delete album</button>
+            </a>
+        {% endif %}
+    </div>
+</section>
+<br>
+<br>
+<section>
+    <h4>Reviews</h4>
     {% if ratings|length == 0 %}
-        <p>Brak opinii <button><a href="{% url 'music-urls:rate' %}">Oceń płytę</button></a></p>
+        <p>No ratings</p>
+        <a href="{% url 'music-urls:rate' %}">
+            <button type="button" class="btn btn-secondary btn-sm">
+            Leave rating
+            </button>
+        <br>
     {% else %}
         {% for rate in ratings %}
-            {{rate}} <br>
+            {{ rate }}
+            <br>
         {% endfor %}
-        <button><a href="{% url 'music-urls:rate' %}">Oceń płytę</a></button>
+            <a href="{% url 'music-urls:rate' %}">
+                <button type="button" class="btn btn-secondary btn-sm">
+                    Leave rating
+                </button>
+            </a>
     {% endif %}
+</section>
 {% endblock %}

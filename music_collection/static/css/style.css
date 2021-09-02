@@ -55,6 +55,10 @@
     color: #333;
 }
 
+.home-nav-disable {
+    cursor: not-allowed;
+}
+
 #main-footer {
     height: 40px;
     background-color: #5f4938;
@@ -65,15 +69,16 @@
 }
 
 #main-footer p {
-    font-size: 14px;
+    font-size: 16px;
+    margin-bottom: 0;
 }
 
-.jumbotron{
+.jumbotron {
     height: 100vh;
     margin-bottom: 0;
 }
 
-.element{
+.element {
   shape-image-threshold: 1.5;
   float: center;
   shape-outside: circle(30%);
@@ -81,3 +86,18 @@
   height: 150px;
   border-radius:50%;
 }
+
+.cd-list-title {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 20;
+}
+
+.album-info {
+    width: 25vw;
+}
+
+.album-tracklist {
+    width: 30vw;
+}
+

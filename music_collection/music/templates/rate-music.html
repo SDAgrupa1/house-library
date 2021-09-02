@@ -1,10 +1,16 @@
-{% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Rate Music{% endblock %}
 {% block content %}
-<body>
+<section>
     <form method="post">
         {% csrf_token %}
-        {{form}}
-        <a href="{%url 'music-urls:list-of-cds' %}"><button type="submit">Dodaj swoją recenzje</button></a>
+        {{ form }}
+        <a href="{%url 'music-urls:list-of-cds' %}">
+            <button class="btn btn-secondary btn-sm" type="submit">
+                Confirm
+            </button>
+        </a>
     </form>
+</section>
 {% endblock %}

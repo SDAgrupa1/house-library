@@ -6,6 +6,7 @@ from . import views_basic
 app_name = 'main-urls'
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views_basic.redirect_root),
     path('home/', views_basic.home_view, name='home'),
     path('about-us/', views_basic.about_us_view, name='about-us'),
     path('music/', include('music.urls')),

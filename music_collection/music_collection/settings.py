@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'music',
     'accounts',
     'bootstrapform',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
