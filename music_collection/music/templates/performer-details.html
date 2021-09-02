@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Performer Details{% endblock %}
+{% block content %}
+<section>
+    <div class="media">
+        <div>
+            <figure class="figure">
+                <img src="#" width="375px" class="figure-img img-fluid rounded" alt="cd-cover">
+                <figcaption class="figure-caption">{{ performer.name }}</figcaption>
+            </figure>
+        </div>
+        <div class="performer-info">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h6>Performer:</h6>{{ performer.name }}</li>
+
+            </ul>
+        </div>
+
+    <div>
+        <a href="{%url 'music-urls:list_performer' %}">
+        <button type="button" class="btn btn-secondary btn-sm">Back to Performer list</button></a>
+        {% if user.is_authenticated %}
+            <a href="#">
+                <button type="button" class="btn btn-secondary btn-sm">Edit Performer</button>
+            </a>
+            <a href="#">
+                <button type="button" class="btn btn-secondary btn-sm">Delete Performer</button>
+            </a>
+        {% endif %}
+    </div>
+</section>
+<br>
