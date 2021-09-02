@@ -3,12 +3,12 @@
 {% block content %}
 <section>
     <div>
-        <h3> Are You sure to delete {{ music.name_cd }}?</h3>
+        <h3>Are You sure to delete {{ music.name_cd }}?</h3>
     </div>
     <br>
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-secondary btn-sm">Yes, I'm sure, pleas delete that Album</button>
+        <button type="submit" class="btn btn-success btn-sm">Yes, I'm sure, pleas delete that Album</button>
     </form>
     {% include 'redirect-album-list.html' %}
 </section>

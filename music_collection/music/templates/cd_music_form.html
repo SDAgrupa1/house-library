@@ -3,15 +3,18 @@
 {% load crispy_forms_tags %}
 {% block title %}New Music Album{% endblock %}
 {% block content %}
-<section style="width:930px">
-    <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form|crispy }}
-        <br>
-        <div>
-            <button type="submit" class="btn btn-secondary btn-sm">Confirm</button>
-            {% include 'redirect-album-list.html' %}
-        </div>
-    </form>
+<section>
+    <table>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+            <br>
+            <div>
+                {% include 'redirect-album-list.html' %}
+                <button type="submit" class="btn btn-success btn-sm">Confirm</button>
+            </div>
+        </form>
+
 </section>
 {% endblock %}
