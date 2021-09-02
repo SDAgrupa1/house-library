@@ -4,7 +4,7 @@ from .models import Rating, MusicAlbum
 class RatingForm(ModelForm):
     class Meta:
         model = Rating
-        fields = ['review','stars','music']
+        fields = ['stars','music']
 
 
 class MusicForm(ModelForm):

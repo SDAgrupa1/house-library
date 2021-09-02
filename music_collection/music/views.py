@@ -60,7 +60,7 @@ def edit_music_album(request, id):
     if form.is_valid():
         form.save()
         return redirect('music-urls:list-of-cds')
-    return render(request, 'cd_music_form.html', {'form': form})
+    return render(request, 'edit-album.html', {'form': form})
 
 
 def delete_music_album(request, id):
@@ -71,3 +71,4 @@ def delete_music_album(request, id):
         return redirect('music-urls:list-of-cds')
 
     return render(request, 'sure.html', {'music': music})
+
