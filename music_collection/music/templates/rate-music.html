@@ -4,19 +4,18 @@
 {% block title %}Rate Album{% endblock %}
 {% block content %}
 <section>
-    <div>
+    <table>
         <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <br>
+        {% csrf_token %}
+        {{ form }}
+    </table>
+        <br>
+        <div>
+            {% include 'redirect-album-list.html' %}
             <a href="{%url 'music-urls:list-of-cds' %}">
-            <button class="btn btn-secondary btn-sm" type="submit">
+            <button class="btn btn-success btn-sm" type="submit">
                 Confirm</button>
-            </a>
+        </div>
         </form>
-    </div>
-    <div>
-        {% include 'redirect-album-list.html' %}
-    </div>
 </section>
 {% endblock %}
