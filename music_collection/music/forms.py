@@ -5,14 +5,12 @@ from .models import Rating, MusicAlbum, Performer
 class RatingForm(ModelForm):
     class Meta:
         model = Rating
-        fields = ['review', 'stars', 'music']
+        fields = ['stars','music']
         
         widgets = {
-            'review': Textarea(attrs={'class': 'form-control'}),
             'stars': NumberInput(attrs={'class': 'form-control'}),
             'music': Select(attrs={'class': 'form-control'}),
         }
-
 
 
 class MusicForm(ModelForm):
