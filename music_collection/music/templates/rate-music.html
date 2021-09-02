@@ -11,10 +11,11 @@
     </table>
         <br>
         <div>
-            {% include 'redirect-album-list.html' %}
             <a href="{%url 'music-urls:list-of-cds' %}">
             <button class="btn btn-success btn-sm" type="submit">
                 Confirm</button>
+                {% include 'redirect-album-list.html' %}
+
         </div>
         </form>
 </section>
