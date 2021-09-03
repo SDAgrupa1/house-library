@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}New Music album{% endblock %}
+{% block title %}Confirm Deletion{% endblock %}
 {% block content %}
 <section>
     <div>
-        <h3>Are You sure to delete {{ music.name_cd }}?</h3>
+        <h3>Are You sure to delete: {{ music.performer }} "{{ music.name_cd }}"?</h3>
     </div>
     <br>
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-success btn-sm">Yes, I'm sure, pleas delete that Album</button>
+        <button type="submit" class="btn btn-success btn-sm">Yes, I'm sure. Please delete.</button>
     </form>
     {% include 'redirect-album-list.html' %}
 </section>
-    <a href="{%url 'music-urls:list_performer' %}"><button>Back to album list</button></a>
-
 {% endblock %}
