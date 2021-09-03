@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Edit profile{% endblock %}
 {% block content %}
+{% load static %}
+{% load bootstrap %}
 
 
-
-<h1>Edit profile...</h1>
+<span style="color: black; font-family: Century Gothic; font-size: 30px"><b>Edit profile</b></span>
 <br/><br/>
-
-<img src="{{user.profile.profile_pic}}", width = 200, height=200, class='rounded-circle'>
+<img class="element" src="{% static 'my_media/profile_pic/AWATAR.jpg' %}" alt="awatar">
 <br/><br/>
 
 <div>{{ user.profile.about_me }}</div>
@@ -29,15 +29,18 @@
 </p>
 
 <br/><br/>
-
+  <center>
+          <div class="card" style="width: 40rem; bottom: 370px;">
+          <div class="card-body">
 <div class="form-group">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Update profile</button>
+        {{ form|bootstrap}}
+        <button type="submit" class="btn btn-dark">Update profile</a>
+            <i class="fas fa-sign-in-alt"></i></i></button>
     </form>
 </div>
-
+  <center>
 
 
 
