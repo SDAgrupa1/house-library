@@ -4,13 +4,13 @@
 {% block content %}
 <div>
     <div class="cd-list-title">
-    {% if cds|length == 0 %}
+    {% if object_list|length == 0 %}
         <h2>No albums in collection</h2>
     {% else %}
         <h2>Numbers of albums: {{ cds|length }}</h2>
     </div>
     <div class="list-group">
-        {% for cd in cds%}
+        {% for cd in object_list %}
         <a href="./{{cd.id}}" class="list-group-item list-group-item-action list-group-item-light">
             {{ forloop.counter }}. {{ cd }}
         </a>
@@ -23,19 +23,24 @@
         <button type="button" class="btn btn-secondary btn-sm">Add new album</button></a>
     {% endif %}
 </div>
-<!--Here should go paginator-->
-<!--<div class="pagination">-->
-<!--    <span class="step-links">-->
-<!--        {% if page_obj.has_previous %}-->
-<!--            <a href="?page={{ page_obj.previous_page_number }}">prev</a>-->
-<!--        {% endif %}-->
-<!--        <span class="current">-->
-<!--          {{ page_obj.number }}-->
-<!--        </span>-->
-<!--        {% if page_obj.has_next %}-->
-<!--            <a href="?page={{ page_obj.next_page_number }}">next</a>-->
-<!--        {% endif %}-->
-<!--    </span>-->
-<!--</div>-->
+
+<!--Here goes paginator-->
+<div class="pagination;text-align:center" style="text-align:center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; FIRST</a>
+            <a href="?page={{ page_obj.previous_page_number }}">PREVIOUS</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NEXT</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">LAST &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}
