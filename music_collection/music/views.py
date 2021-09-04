@@ -1,16 +1,19 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import MusicAlbum, Rating, Performer
 from .forms import RatingForm, MusicForm, PerformerForm
 
 
-# Create your views here.
+# class CdTemplateView(TemplateView):
+#     template_name = 'cd-list.html'
+#     extra_context = {'cds': MusicAlbum.objects.all()}
 
 
-class CdTemplateView(TemplateView):
+class CdListView(ListView):
+    paginate_by = 10
+    model = MusicAlbum
     template_name = 'cd-list.html'
-    extra_context = {'cds': MusicAlbum.objects.all()}
 
 
 def cds_dynamic_lookup_view(request, id):
@@ -65,7 +68,6 @@ def delete_music_album(request, id):
         return redirect('music-urls:list-of-cds')
 
     return render(request, 'sure.html', {'music': music})
-
 
 
 # PERFORMER

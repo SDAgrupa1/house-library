@@ -6,7 +6,7 @@ from . import views
 
 app_name = 'music-urls'
 urlpatterns = [
-    path('cds/', views.CdTemplateView.as_view(), name='list-of-cds'),
+    path('cds/', views.CdListView.as_view(), name='list-of-cds'),
     path('cds/<id>/', views.cds_dynamic_lookup_view, name='cd-bio'),
     path('rate/', views.rate_music, name='rate'),
     path('all_music_albums/', views.all_music_albums, name='all_music_albums'),
