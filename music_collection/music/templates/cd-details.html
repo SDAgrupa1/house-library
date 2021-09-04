@@ -7,12 +7,12 @@
         <div>
             {% if not cds.cover %}
                 <figure class="figure">
-                    <img src="#" width="385px"
+                    <img src="{% static 'img/blank-cd.png' %}" width="378px"
                          class="figure-img img-fluid rounded" alt="cd-cover">
                 </figure>
             {% else %}
                 <figure class="figure">
-                    <img src="{{ cds.cover.url }}" width="385px" class="figure-img img-fluid rounded" alt="cd-cover">
+                    <img src="{{ cds.cover.url }}" width="378px" class="figure-img img-fluid rounded" alt="cd-cover">
             {% endif %}
         </div>
         <div class="album-info">
