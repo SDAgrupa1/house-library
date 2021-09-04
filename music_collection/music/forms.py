@@ -16,10 +16,9 @@ class RatingForm(ModelForm):
 class MusicForm(ModelForm):
     class Meta:
         model = MusicAlbum
-        fields = ['performer', 'name_cd', 'publisher', 'year', 'info', 'category_models', 'cover', 'availability']
+        fields = ['name_cd', 'publisher', 'year', 'info', 'category_models', 'cover', 'availability']
 
         widgets = {
-            'performer': TextInput(attrs={'class': 'form-control'}),
             'name_cd': TextInput(attrs={'class': 'form-control'}),
             'publisher': TextInput(attrs={'class': 'form-control'}),
             'year': TextInput(attrs={'class': 'form-control'}),
@@ -34,3 +33,7 @@ class PerformerForm(ModelForm):
     class Meta:
         model = Performer
         fields = ['name']
+
+        widgets = {
+            'name': TextInput(attrs={'class': 'form-control'}),
+        }
