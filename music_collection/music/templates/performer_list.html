@@ -4,13 +4,13 @@
 {% block content %}
 <div>
     <div class="performer-list-name">
-    {% if performers|length == 0 %}
+    {% if object_list|length == 0 %}
         <h2>No performer in collection</h2>
     {% else %}
-        <h2>Numbers of performer: {{ performers|length }}</h2>
+        <h2>Performer list:</h2>
     </div>
     <div class="list-group">
-        {% for performer in performers %}
+        {% for performer in object_list %}
         <a href="./{{performer.id}}" class="list-group-item list-group-item-action list-group-item-light">
             {{ forloop.counter }}. {{ performer }}
         </a>
@@ -21,5 +21,23 @@
         <a href="{% url 'music-urls:new_performer' %}">
         <button type="button" class="btn btn-secondary btn-sm">Add new Performer</button></a>
     {% endif %}
+</div>
+<!--Here goes paginator-->
+<div class="pagination;text-align:center" style="text-align:center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; FIRST</a>
+            <a href="?page={{ page_obj.previous_page_number }}">PREVIOUS</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NEXT</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">LAST &raquo;</a>
+        {% endif %}
+    </span>
 </div>
 {% endblock %}

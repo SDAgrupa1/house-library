@@ -6,12 +6,16 @@
         <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
-        <button type="submit" class="btn btn-secondary btn-sm">Add new performer</button>
+            <br>
+        <button type="submit" class="btn btn-success btn-sm">Add new performer</button>
         </form>
     </div>
     <div>
-        <a href="{%url 'music-urls:list_performer' %}">
-        <button type="button" class="btn btn-secondary btn-sm">Back to performer list</button></a>
+<!--        <a href="{%url 'music-urls:list_performer' %}">-->
+<!--        <button type="button" class="btn btn-secondary btn-sm">Show performer list</button></a>-->
+        {% include 'redirect-performer-list.html' %}
+        {% include 'redirect-album-list.html' %}
+
     </div>
 </section>
 {% endblock %}

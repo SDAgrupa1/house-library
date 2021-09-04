@@ -92,7 +92,7 @@ class MusicAlbum(models.Model):
     availability = models.ForeignKey(Availability, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.performer.name}, {self.name_cd}, {self.year}'
+        return f'{self.performer}: "{self.name_cd}", {self.year}'
 
 
 class Rating(models.Model):

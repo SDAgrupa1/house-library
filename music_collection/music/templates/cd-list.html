@@ -5,9 +5,10 @@
 <div>
     <div class="cd-list-title">
     {% if object_list|length == 0 %}
-        <h2>No albums in collection</h2>
+        <h3>No albums in collection</h3>
     {% else %}
-        <h2>Numbers of albums: {{ cds|length }}</h2>
+        <h3>Check our collection:</h3>
+<!--        <h2>Numbers of albums: {{ cds|length }}</h2>-->
     </div>
     <div class="list-group">
         {% for cd in object_list %}
