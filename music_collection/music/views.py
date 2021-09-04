@@ -75,13 +75,12 @@ def delete_music_album(request, id):
 
 class PerformerTemplateView(TemplateView):
     template_name = 'performer_list.html'
-    extra_context = {'performer': Performer.objects.all()}
-
+    extra_context = {'performers': Performer.objects.all()}
 
 def performer_dynamic_lookup_view(request, id):
-    name = Performer.objects.get(id=id)
+    performer = Performer.objects.get(id=id)
     context = {
-        "performer_list": name,
+        "performer": performer,
     }
     return render(request, "performer-details.html", context)
 
@@ -95,9 +94,6 @@ def new_performer(request):
     return render(request, 'performer_form.html', {'form': form})
 
 
-def list_performer(request):
-    performer_list = Performer.objects.all()
-    return render(request, "performer_list.html", {'performer.new': performer_list})
 
 
 def edit_performer(request, id):
