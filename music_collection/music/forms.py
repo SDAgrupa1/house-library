@@ -33,4 +33,4 @@ class MusicForm(ModelForm):
 class PerformerForm(ModelForm):
     class Meta:
         model = Performer
-        fields = ['name']
+        fields = ['name','www']
