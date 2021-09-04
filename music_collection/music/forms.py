@@ -16,7 +16,7 @@ class RatingForm(ModelForm):
 class MusicForm(ModelForm):
     class Meta:
         model = MusicAlbum
-        fields = ['name_cd', 'publisher', 'year', 'info', 'category_models', 'cover', 'availability']
+        fields = ['performer', 'name_cd', 'publisher', 'year', 'info', 'category_models', 'cover', 'availability']
 
         widgets = {
             'performer': Select(attrs={'class': 'form-control'}),
