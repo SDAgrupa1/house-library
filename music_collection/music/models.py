@@ -76,13 +76,13 @@ class Availability(models.Model):
 class Performer(models.Model):
     name = models.CharField(max_length=32)
     www = models.URLField(max_length=60, default='https://www.wikipedia.org/')
-    
+    cd_album = models.ForeignKey("MusicAlbum", on_delete=models.CASCADE, null=True, blank=True)
+
     def __str__(self):
         return f'{self.name}'
 
 
 class MusicAlbum(models.Model):
-    performer = models.ForeignKey(Performer, on_delete=models.CASCADE, null=True, blank=True)
     name_cd = models.CharField(max_length=64, blank=False)
     publisher = models.CharField(max_length=64, blank=False)
     year = models.IntegerField(null=True, blank=True)
@@ -92,8 +92,7 @@ class MusicAlbum(models.Model):
     availability = models.ForeignKey(Availability, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.performer}: "{self.name_cd}", {self.year}'
-
+        return f'{self.name_cd}, {self.year}'
 
 class Rating(models.Model):
     review = models.TextField(default="", blank=True)
