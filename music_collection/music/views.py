@@ -1,16 +1,19 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import MusicAlbum, Rating, Performer
 from .forms import RatingForm, MusicForm, PerformerForm
 
 
-# Create your views here.
+# class CdTemplateView(TemplateView):
+#     template_name = 'cd-list.html'
+#     extra_context = {'cds': MusicAlbum.objects.all()}
 
 
-class CdTemplateView(TemplateView):
+class CdListView(ListView):
+    paginate_by = 10
+    model = MusicAlbum
     template_name = 'cd-list.html'
-    extra_context = {'cds': MusicAlbum.objects.all()}
 
 
 def cds_dynamic_lookup_view(request, id):
@@ -67,19 +70,17 @@ def delete_music_album(request, id):
     return render(request, 'sure.html', {'music': music})
 
 
-
 # PERFORMER
 # Create # Read #Update # Delete
 
 class PerformerTemplateView(TemplateView):
     template_name = 'performer_list.html'
-    extra_context = {'performer': Performer.objects.all()}
-
+    extra_context = {'performers': Performer.objects.all()}
 
 def performer_dynamic_lookup_view(request, id):
-    name = Performer.objects.get(id=id)
+    performer = Performer.objects.get(id=id)
     context = {
-        "performer_list": name,
+        "performer": performer,
     }
     return render(request, "performer-details.html", context)
 
@@ -93,9 +94,6 @@ def new_performer(request):
     return render(request, 'performer_form.html', {'form': form})
 
 
-def list_performer(request):
-    performer_list = Performer.objects.all()
-    return render(request, "performer_list.html", {'performer.new': performer_list})
 
 
 def edit_performer(request, id):

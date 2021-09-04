@@ -32,8 +32,10 @@ class MusicForm(ModelForm):
 class PerformerForm(ModelForm):
     class Meta:
         model = Performer
-        fields = ['name']
+        fields = ['name','www']
 
         widgets = {
             'name': TextInput(attrs={'class': 'form-control'}),
+            'www': TextInput(attrs={'class': 'form-control'}), 
         }
+        
