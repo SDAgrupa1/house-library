@@ -11,7 +11,7 @@
     </div>
     <div class="list-group">
         {% for performer in performers%}
-        <a href="./{{[performer].id}}" class="list-group-item list-group-item-action list-group-item-light">
+        <a href="./{{performer.id}}" class="list-group-item list-group-item-action list-group-item-light">
             {{ forloop.counter }}. {{ performer }}
         </a>
         {% endfor %}

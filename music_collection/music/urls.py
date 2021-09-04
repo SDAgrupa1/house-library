@@ -13,6 +13,6 @@ urlpatterns = [
     path('delete/<int:id>', views.delete_music_album, name='delete'),
     path('performer/new', views.new_performer, name='new_performer'),
     path('performer/list', views.list_performer, name='list_performer'),
-    path('performer/edit', views.edit_performer, name='edit_performer'),
+    path('performer/edit/<int:id>', views.edit_performer, name='edit_performer'),
     path('performer/delete', views.delete_performer, name='delete_performer'),
 ]

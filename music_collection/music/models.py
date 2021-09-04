@@ -89,6 +89,7 @@ class MusicAlbum(models.Model):
 class Performer(models.Model):
     name = models.CharField(max_length=32)
     albums = models.ManyToManyField(MusicAlbum, related_name='albums')
+    www = models.URLField(blank=True)
 
     def __str__(self):
         return f'{self.name}'
