@@ -15,14 +15,26 @@
   <fieldset>
     <form method="post" action=".">
       {% csrf_token %}
-      {{ form|bootstrap}}
+      {{ form|bootstrap }}
       </br>
       <button type="submit" class="btn btn-dark"><a href="{% url 'home' %}">Login</a>
             <i class="fas fa-sign-in-alt"></i></i></button>
     </form>
   </fieldset>
-          </div>
-      Not Registered? Sing Up <a href="{% url 'register' %}">
-      Here...</a>
+      <div class="text-center">
+        Not Registered? Sing Up <a href="{% url 'register' %}">
+        Here...</a>
+      <p>or sign up with:</p>
+      <button type="button" class="btn btn-primary btn-floating mx-1">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+
+      <button type="button" class="btn btn-primary btn-floating mx-1">
+        <i class="fab fa-instagram"></i>
+      </button>
+
+      <button type="button" class="btn btn-primary btn-floating mx-1">
+        <i class="fab fa-linkedin"></i>
+      </button>
   </center>
 {% endblock %}
