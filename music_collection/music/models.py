@@ -72,7 +72,7 @@ class Availability(models.Model):
     def __str__(self):
         return f'{self.availability_choices}'
 
-
+    
 class Performer(models.Model):
     name = models.CharField(max_length=32)
     www = models.URLField(max_length=60, default='https://www.wikipedia.org/')
@@ -93,7 +93,6 @@ class MusicAlbum(models.Model):
 
     def __str__(self):
         return f'{self.name_cd}, {self.year}'
-
 
 class Rating(models.Model):
     review = models.TextField(default="", blank=True)

@@ -5,8 +5,8 @@ from .models import Rating, MusicAlbum, Performer
 class RatingForm(ModelForm):
     class Meta:
         model = Rating
-        fields = ['stars','music']
-        
+        fields = ['stars', 'music']
+
         widgets = {
             'stars': NumberInput(attrs={'class': 'form-control'}),
             'music': Select(attrs={'class': 'form-control'}),
@@ -16,9 +16,10 @@ class RatingForm(ModelForm):
 class MusicForm(ModelForm):
     class Meta:
         model = MusicAlbum
-        fields = ['name_cd', 'publisher', 'year', 'info', 'category_models', 'cover', 'availability']
+        fields = ['performer', 'name_cd', 'publisher', 'year', 'info', 'category_models', 'cover', 'availability']
 
         widgets = {
+            'performer': Select(attrs={'class': 'form-control'}),
             'name_cd': TextInput(attrs={'class': 'form-control'}),
             'publisher': TextInput(attrs={'class': 'form-control'}),
             'year': TextInput(attrs={'class': 'form-control'}),
@@ -28,14 +29,13 @@ class MusicForm(ModelForm):
             'availability': Select(attrs={'class': 'form-control'}),
         }
 
-        
+
 class PerformerForm(ModelForm):
     class Meta:
         model = Performer
-        fields = ['name','www']
+        fields = ['name', 'www']
 
         widgets = {
             'name': TextInput(attrs={'class': 'form-control'}),
-            'www': TextInput(attrs={'class': 'form-control'}), 
+            'www': TextInput(attrs={'class': 'form-control'}),
         }
-        

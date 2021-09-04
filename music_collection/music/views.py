@@ -73,9 +73,16 @@ def delete_music_album(request, id):
 # PERFORMER
 # Create # Read #Update # Delete
 
-class PerformerTemplateView(TemplateView):
+# class PerformerTemplateView(TemplateView):
+#     template_name = 'performer_list.html'
+#     extra_context = {'performers': Performer.objects.all()}
+
+
+class PerformerListView(ListView):
+    paginate_by = 10
+    model = Performer
     template_name = 'performer_list.html'
-    extra_context = {'performers': Performer.objects.all()}
+
 
 def performer_dynamic_lookup_view(request, id):
     performer = Performer.objects.get(id=id)
@@ -90,10 +97,8 @@ def new_performer(request):
 
     if form.is_valid():
         form.save()
-        return redirect(PerformerForm)
+        return redirect('music-urls:new')
     return render(request, 'performer_form.html', {'form': form})
-
-
 
 
 def edit_performer(request, id):
