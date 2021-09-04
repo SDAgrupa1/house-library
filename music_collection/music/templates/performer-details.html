@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}Performer Details{% endblock %}
 {% block content %}
+
 <section>
     <div class="media">
         <div>
@@ -14,7 +15,11 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <h6>Performer:</h6>{{ performer.name }}</li>
+            </ul>
 
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h6>Website:</h6><a href="{{ performer.www }}">{{ performer.www }}</li></a>
             </ul>
         </div>
 
@@ -29,6 +34,7 @@
                 <button type="button" class="btn btn-secondary btn-sm">Delete Performer</button>
             </a>
         {% endif %}
+        {% endblock %}
     </div>
 </section>
 <br>

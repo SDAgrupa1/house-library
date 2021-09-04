@@ -90,7 +90,7 @@ class MusicAlbum(models.Model):
 
 class Performer(models.Model):
     name = models.CharField(max_length=32)
-
+    www = models.URLField(max_length=60, default='https://www.wikipedia.org/')
     def __str__(self):
         return f'{self.name}'
 
