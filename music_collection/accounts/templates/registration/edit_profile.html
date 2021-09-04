@@ -7,7 +7,7 @@
 
 <span style="color: black; font-family: Century Gothic; font-size: 30px"><b>Edit profile</b></span>
 <br/><br/>
-<img class="element" src="{% static 'my_media/profile_pic/AWATAR.jpg' %}" alt="awatar">
+<img class="element" src='{{user.profile.profile_pic.url}}' alt="awatar">
 <br/><br/>
 
 <div>{{ user.profile.about_me }}</div>
