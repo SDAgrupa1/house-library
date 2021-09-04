@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+
 import dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,10 +95,20 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 
 STATIC_ROOT = (BASE_DIR / "staticfiles")
 
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'my_media/') # 'data' is my media folder
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'my_media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'python.projects.email@gmail.com'
+EMAIL_HOST_PASSWORD = 'enter_the_correct_password'

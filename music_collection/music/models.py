@@ -42,6 +42,7 @@ class Category(models.Model):
         null=True
     )
 
+
     @property
     def is_upperclass(self):
         return self.category_choose in {self.CATEGORY_CHOOSE}
@@ -65,6 +66,7 @@ class Availability(models.Model):
         null=True
     )
 
+    @property
     def is_upperclass(self):
         return self.availability_choices in {self.AVAILABILITY_CHOICES}
 
@@ -73,23 +75,21 @@ class Availability(models.Model):
 
 
 class MusicAlbum(models.Model):
-    performer = models.CharField(max_length=64, blank=False, unique=True)
+    performer = models.ManyToManyField("performer", max_length=64, blank=False)
     name_cd = models.CharField(max_length=64, blank=False)
     publisher = models.CharField(max_length=64, blank=False, )
     year = models.IntegerField(null=True, blank=True)
     info = models.TextField(default="")
-    category_models = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
+    category_models = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     cover = models.ImageField(upload_to="covers", null=True, blank=True)
-    availability = models.OneToOneField(Availability, on_delete=models.CASCADE, null=True, blank=True)
+    availability = models.ForeignKey(Availability, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.performer}, {self.name_cd}, {self.year}'
+        return f'{self.performer.name}, {self.name_cd}, {self.year}'
 
 
 class Performer(models.Model):
     name = models.CharField(max_length=32)
-    albums = models.ManyToManyField(MusicAlbum, related_name='albums')
-    www = models.URLField(blank=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -103,6 +103,3 @@ class Rating(models.Model):
 
     def __str__(self):
         return f'{self.stars} -> {self.review}'
-
-
-
