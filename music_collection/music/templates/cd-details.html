@@ -30,7 +30,8 @@
             </ul>
         </div>
         <div>
-            <li class="list-group-item album-tracklist">{{ cds.info }}</li>
+            <li class="list-group-item album-tracklist" style="height:378px; overflow:auto">
+                {{ cds.info|linebreaks }}</li>
         </div>
     </div>
 
@@ -45,6 +46,7 @@
         {% endif %}
         <a href="{%url 'music-urls:list-of-cds' %}">
         <button type="button" class="btn btn-secondary btn-sm">Back to album list</button></a>
+
     </div>
 </section>
 <br>
