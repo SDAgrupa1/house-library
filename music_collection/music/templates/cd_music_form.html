@@ -14,5 +14,10 @@
             {% include 'redirect-album-list.html' %}
         </div>
         </form>
+            <a href="{% url 'music-urls:new_performer' %}">
+                <button class="btn btn-primary btn-sm" style="transform:translate(1710%,-1905%)">
+                    +
+                </button>
+            </a>
 </section>
 {% endblock %}

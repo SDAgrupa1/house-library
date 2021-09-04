@@ -4,8 +4,8 @@
     <h1> Are You sure to delete {{ performer.name }}?</h1>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes, I'm sure, pleas delete that Performer</button>
+        <button type="submit" class="btn btn-success btn-sm">Yes, I'm sure, pleas delete that Performer</button>
     </form>
-    <a href="{%url 'music-urls:list_performer' %}"><button>Back to performer list</button></a>
+        {% include 'redirect-performer-list.html' %}
 
 {% endblock %}
