@@ -30,11 +30,12 @@
             </ul>
         </div>
         <div>
-            <li class="list-group-item album-tracklist">{{ cds.info }}</li>
+            <li class="list-group-item album-tracklist" style="height:378px; overflow:auto">
+                {{ cds.info|linebreaks }}</li>
         </div>
     </div>
 
-    <div>
+    <div style="align-text:row">
         {% if user.is_authenticated %}
             <a href="{% url 'music-urls:edit' cds.id %}">
                 <button type="button" class="btn btn-info btn-sm">Edit album</button>
@@ -43,14 +44,14 @@
                 <button type="button" class="btn btn-danger btn-sm">Delete album</button>
             </a>
         {% endif %}
-        <a href="{%url 'music-urls:list-of-cds' %}">
-        <button type="button" class="btn btn-secondary btn-sm">Back to album list</button></a>
-    </div>
+        {% include 'redirect-album-list.html' %}
+        <b>Status: </b>{{ cds.availability }}
+        </div>
 </section>
 <br>
 <section>
     <div>
-        <h4>Reviews</h4>
+        <h4>Rating</h4>
         {% if ratings|length == 0 %}
             <p>No ratings</p>
             <br>
