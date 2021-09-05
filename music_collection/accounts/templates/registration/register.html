@@ -14,13 +14,14 @@
     <div class="card" style="width: 40rem; bottom: 260px;">
     <div class="card-body">
   <fieldset>
-    <form method="post" action=".">
+    <form method="POST">
       {% csrf_token %}
-      {{ form|bootstrap}}
+      {{ form|bootstrap }}
       </br>
-      <button type="submit" class="btn btn-dark"><a href="{% url 'login' %}">Register</a>
-            <i class="fas fa-sign-in-alt"></i></i></button>
+      <button class="btn btn-dark">Register <a href="{% url 'home' %}"></a>
+        <i class="fas fa-sign-in-alt"></i></i></button>
     </form>
   </fieldset>
   </center>
 {% endblock %}
+
