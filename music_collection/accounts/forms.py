@@ -6,10 +6,16 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), max_length=255)
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    about_me = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    facebook_url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    instagram_url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    linkedin_url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'about_me', 'facebook_url',
+                   'instagram_url', 'linkedin_url']
 
 
     def __init__(self, *args, **kwargs):
@@ -23,13 +29,18 @@ class EditProfileForm(UserChangeForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), max_length=255)
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    about_me = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    facebook_url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    instagram_url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    linkedin_url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50)
+    profile_pic = forms.ImageField(label=('Avatar'), required=False, error_messages={'invalid':("Image files only")}, widget=forms.FileInput)
 
 
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email']
+        fields = ['first_name', 'last_name', 'email', 'about_me', 'facebook_url', 'instagram_url',
+                  'linkedin_url', 'profile_pic']
 
 
 

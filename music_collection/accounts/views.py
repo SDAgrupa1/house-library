@@ -25,4 +25,4 @@ class UserEditView(generic.UpdateView):
     success_url = reverse_lazy('home')
 
     def get_object(self):
-        return self.request.user
+        return self.request.user.profile
