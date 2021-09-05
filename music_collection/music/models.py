@@ -76,7 +76,7 @@ class Availability(models.Model):
 class Performer(models.Model):
     name = models.CharField(max_length=32)
     www = models.URLField(max_length=60, default='https://www.wikipedia.org/')
-    cd_album = models.ForeignKey("MusicAlbum", on_delete=models.CASCADE, null=True, blank=True)
+    cd_album = models.ForeignKey("MusicAlbum", on_delete=models.CASCADE, null=True, blank=True, related_name='+')
     spotify = models.URLField(max_length=60, default='https://open.spotify.com/')
 
 
