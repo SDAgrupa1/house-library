@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
-from .models import MusicAlbum
+from .models import MusicAlbum, Performer
 
 """To run all tests type python manage.py test music"""
 
@@ -10,10 +10,15 @@ class MusicModelTest(TestCase):
 
     def setUp(self):
         # Set up non-modified object used by test methods
-        MusicAlbum.objects.create(performer="Madonna",
+
+        performer = Performer.objects.create(name="Madonna",
+                                             www='https: // www.madonna.com /'
+                                             )
+
+        MusicAlbum.objects.create(performer=performer,
                                   name_cd="Like a Prayer",
                                   publisher="Sire Records",
-                                  year="1989-01-01",
+                                  year="1989",
                                   info="This is some example track list",
                                   category_models=None
                                   )
@@ -49,16 +54,17 @@ class MusicModelTest(TestCase):
         music = MusicAlbum.objects.get(id=1)
         performer_field = music.performer
         name_cd_field = music.name_cd
-        self.assertEqual(str(music), f"{performer_field} {name_cd_field}")
+        year_field = music.year
+        self.assertEqual(str(music), f'{performer_field}: "{name_cd_field}", {year_field}')
 
     # test str in date field
     def test_str_in_year_should_fail(self):
         music = MusicAlbum(year="Two thousand ten")
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(ValueError):
             music.save()
 
     # test max len for performer field
     def test_performer_name_max_length(self):
-        music = MusicAlbum.objects.get(id=1)
-        max_length = music._meta.get_field('performer').max_length
-        self.assertEqual(max_length, 64)
+        performer = Performer.objects.get(id=1)
+        max_length = performer._meta.get_field('name').max_length
+        self.assertEqual(max_length, 32)
