@@ -3,19 +3,16 @@ The goal of this project is to make online library for music albums, books and m
 Default destination group are people, who have collections and the want to organize collections
 
 ## Table of contents
-* [Technologies](##Technologies)
-* [Run](##Run)
-* [Features](##Features)
-* [Information](##Information)
+* [Technologies](## Technologies)
+* [Run](## Run)
+* [Features](## Features)
+* [Information](# Information)
 
 ## Technologies
-* Python 3
-* Django
-* HTML
+* Python 3.9.5
+* Django 3.2.3
+* HTML 5
 * CSS
-* JavaScript
-* GitHub
-* Pycharm
 
 ## Run
 To run this project install this locally using terminal in properly folder:
