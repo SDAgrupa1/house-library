@@ -1,6 +1,6 @@
 # House Library 
 The goal of this project is to make online library for music albums, books and movies.
-Default destination group are people, who have collections and the want to organize collections
+Default destination group are people, who have collections and the want to organize them.
 
 ## Table of contents
 * [Technologies](##Technologies)
