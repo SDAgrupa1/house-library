@@ -3,10 +3,10 @@ The goal of this project is to make online library for music albums, books and m
 Default destination group are people, who have collections and the want to organize collections
 
 ## Table of contents
-* [Technologies](## Technologies)
-* [Run](## Run)
-* [Features](## Features)
-* [Information](# Information)
+* [Technologies](##Technologies)
+* [Run](##Run)
+* [Features](##Features)
+* [Information](#Information)
 
 ## Technologies
 * Python 3.9.5
