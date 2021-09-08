@@ -3,11 +3,11 @@
 {% block title %}Performer List{% endblock %}
 {% block content %}
 <div>
-    <div class="performer-list-name">
-    {% if object_list|length == 0 %}
-        <h2>No performer in collection</h2>
-    {% else %}
-        <h2>Performer list:</h2>
+    <div class="cd-list-title">
+        {% if object_list|length == 0 %}
+        <h3>No performers available</h3>
+        {% else %}
+        <h3>Performer list:</h3>
     </div>
     <div class="list-group">
         {% for performer in object_list %}
@@ -22,7 +22,6 @@
         <button type="button" class="btn btn-secondary btn-sm">Add new Performer</button></a>
     {% endif %}
 </div>
-<!--Here goes paginator-->
 <div class="pagination;text-align:center" style="text-align:center">
     <span class="step-links">
         {% if page_obj.has_previous %}

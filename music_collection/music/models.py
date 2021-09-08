@@ -1,6 +1,5 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -72,13 +71,12 @@ class Availability(models.Model):
     def __str__(self):
         return f'{self.availability_choices}'
 
-    
+
 class Performer(models.Model):
     name = models.CharField(max_length=32)
     www = models.URLField(max_length=60, default='https://www.wikipedia.org/')
-    cd_album = models.ForeignKey("MusicAlbum", on_delete=models.CASCADE, null=True, blank=True)
+    cd_album = models.ForeignKey("MusicAlbum", on_delete=models.CASCADE, null=True, blank=True, related_name='+')
     spotify = models.URLField(max_length=60, default='https://open.spotify.com/')
-
 
     def __str__(self):
         return f'{self.name}'

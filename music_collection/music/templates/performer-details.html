@@ -3,43 +3,28 @@
 {% block title %}Performer Details{% endblock %}
 {% block content %}
 
-<section>
-    <div class="media">
-        <div>
-            <figure class="figure">
-                <img src="#" width="375px" class="figure-img img-fluid rounded" alt="performer-detail">
-                <figcaption class="figure-caption">{{ performer.name }}</figcaption>
-            </figure>
-        </div>
-        <div class="performer-info">
-            <ul class="performer-group">
-                <li class="performer-group-item">
-                    <h6>Performer:</h6>{{ performer.name }}</li>
-            </ul>
-
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <h6>Website:</h6><a href="{{ performer.www }}" target="_blank">{{ performer.www }}</li></a>
-            </ul>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <h6>Spotify:</h6><a href="{{ performer.spotify }}" target="_blank">{{ performer.spotify }}</li></a>
-            </ul>
-        </div>
-
-    <div>
-        <a href="{%url 'music-urls:list_performer' %}">
-        <button type="button" class="btn btn-secondary btn-sm">Back to Performer list</button></a>
-        {% if user.is_authenticated %}
-            <a href="#">
-                <button type="button" class="btn btn-secondary btn-sm">Edit Performer</button>
-            </a>
-            <a href="#">
-                <button type="button" class="btn btn-secondary btn-sm">Delete Performer</button>
-            </a>
-        {% endif %}
+<div style="display:flex; justify-content: space-between; background-color:white; margin-bottom: 20px;
+border-radius: 7px">
+    <div style="width:400px; height:80px; padding: 15px">
+        <dl>
+            <dt>Performer:</dt>
+            <dd>{{ performer.name }}</dd>
+        </dl>
     </div>
-</section>
-<br>
-
+    <div style="width:400px; height:80px; padding: 15px">
+        <dl>
+            <dt>Website:</dt>
+            <dd><a href="{{ performer.www }}" target="_blank">{{ performer.www }}</a></dd>
+        </dl>
+    </div>
+        <div style="width:400px; height:80px; padding: 15px">
+        <dl>
+            <dt>Spotify:</dt>
+            <dd><a href="{{ performer.spotify }}" target="_blank">{{ performer.spotify }}</a></dd>
+        </dl>
+    </div>
+</div>
+<div style="align-text:row">
+    {% include 'redirect-performer-list.html' %}
+</div>
 {% endblock %}

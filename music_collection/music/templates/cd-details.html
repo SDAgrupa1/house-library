@@ -2,73 +2,81 @@
 {% load static %}
 {% block title %}Album Details{% endblock %}
 {% block content %}
-<section>
-    <div class="media">
-        <div>
-            {% if not cds.cover %}
-                <figure class="figure">
-                    <img src="{% static 'img/blank-cd.png' %}" width="378px"
-                         class="figure-img img-fluid rounded" alt="cd-cover">
-                </figure>
-            {% else %}
-                <figure class="figure">
-                    <img src="{{ cds.cover.url }}" width="378px" class="figure-img img-fluid rounded" alt="cd-cover">
-            {% endif %}
-        </div>
-        <div class="album-info">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <h6>Performer:</h6>{{ cds.performer }}</li>
-                <li class="list-group-item">
-                    <h6>Title:</h6>{{ cds.name_cd }}</li>
-                <li class="list-group-item">
-                    <h6>Year:</h6>{{ cds.year }}</li>
-                <li class="list-group-item">
-                    <h6>Publisher:</h6>{{ cds.publisher }}</li>
-                <li class="list-group-item">
-                    <h6>Category:</h6>{{ cds.category_models }}</li>
-            </ul>
-        </div>
-        <div>
-            <li class="list-group-item album-tracklist" style="height:378px; overflow:auto">
-                {{ cds.info|linebreaks }}</li>
-        </div>
-    </div>
 
-    <div style="align-text:row">
-        {% if user.is_authenticated %}
-            <a href="{% url 'music-urls:edit' cds.id %}">
-                <button type="button" class="btn btn-info btn-sm">Edit album</button>
-            </a>
-            <a href="{% url 'music-urls:delete' cds.id %}">
-                <button type="button" class="btn btn-danger btn-sm">Delete album</button>
-            </a>
+<div style="display:flex; justify-content: space-between; background-color:white; margin-bottom: 20px;
+border-radius: 7px">
+    <div style="width:400px; height:400px">
+        {% if not cds.cover %}
+        <img src="{% static 'img/blank-cd.png' %}" style="width:400px; height:400px; border-radius: 7px"
+             alt="album-cover">
+        {% else %}
+        <img src="{{ cds.cover.url }}" style="width:400px; height:400px; border-radius: 7px" alt="album-cover">
         {% endif %}
-        {% include 'redirect-album-list.html' %}
-        <b>Status: </b>{{ cds.availability }}
-        </div>
-</section>
+    </div>
+    <div style="width:400px; height:400px; padding: 15px">
+        <dl>
+            <dt>Performer:</dt>
+            <dd>{{ cds.performer }}</dd>
+            <dt>Title:</dt>
+            <dd>{{ cds.name_cd }}</dd>
+            <dt>Year:</dt>
+            <dd>{{ cds.year }}</dd>
+            <dt>Publisher:</dt>
+            <dd>{{ cds.publisher }}</dd>
+            <dt>Category:</dt>
+            <dd>{{ cds.category_models }}</dd>
+            <br>
+            <!-- IN DATABASE AVAILABLE ID=1,BORROWED ID==2 -->
+            <dt>Status:</dt>
+                {% if cds.availability_id == 1 %}
+                    <dd style="color: #8bc34a">{{ cds.availability }}</dd>
+                {% elif cds.availability_id == 2 %}
+                    <dd style="color: red">{{ cds.availability }}</dd>
+                {% else %}
+                    <dd>{{ cds.availability }}</dd>
+                {% endif %}
+        </dl>
+    </div>
+    <div style="width:400px; height:400px; padding: 15px; overflow:auto">
+        <dl>
+            <dt>Tracklist:</dt>
+            <dd>{{ cds.info|linebreaks }}</dd>
+        </dl>
+    </div>
+</div>
+
+<div style="align-text:row">
+    {% if user.is_authenticated %}
+    <a href="{% url 'music-urls:edit' cds.id %}">
+        <button type="button" class="btn btn-info btn-sm">Edit album</button>
+    </a>
+    <a href="{% url 'music-urls:delete' cds.id %}">
+        <button type="button" class="btn btn-danger btn-sm">Delete album</button>
+    </a>
+    {% endif %}
+    {% include 'redirect-album-list.html' %}
+</div>
+
 <br>
-<section>
+<div>
     <div>
         <h4>Rating</h4>
         {% if ratings|length == 0 %}
             <p>No ratings</p>
-            <br>
         {% else %}
             {% for rate in ratings %}
-                {{ rate }}
+            <p>{{ rate }}</p>
             {% endfor %}
         {% endif %}
     </div>
     <div>
         {% if user.is_authenticated %}
-            <a href="{% url 'music-urls:rate' %}">
-                <button type="button" class="btn btn-secondary btn-sm">
-                    Leave rating
-                </button>
-            </a>
+        <a href="{% url 'music-urls:rate' %}">
+            <button type="button" class="btn btn-secondary btn-sm">
+                Rate
+            </button>
+        </a>
         {% endif %}
     </div>
-</section>
+</div>
 {% endblock %}
