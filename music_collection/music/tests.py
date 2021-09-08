@@ -1,4 +1,3 @@
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from .models import MusicAlbum, Performer
@@ -9,8 +8,7 @@ from .models import MusicAlbum, Performer
 class MusicModelTest(TestCase):
 
     def setUp(self):
-        # Set up non-modified object used by test methods
-
+        """Set up non-modified object used by test methods"""
         performer = Performer.objects.create(name="Madonna",
                                              www='https: // www.madonna.com /'
                                              )
